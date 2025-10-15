@@ -40,6 +40,13 @@ class OtzarUtils {
       if (await bookFile.exists()) {
         return true;
       }
+    for (final drive in _availableDrives) {
+      //newer version teh path is under the /books folder with the extension .book
+      final bookPath = '$drive:\\Otzardisk\\books\\$bookId.book';
+      final bookFile = File(bookPath);
+      if (await bookFile.exists()) {
+        return true;
+      }
 
       final zipPath = '$drive:\\zip';
 
